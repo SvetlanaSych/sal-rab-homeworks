@@ -60,7 +60,7 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
     // присвойте totalSum значение productsSum
     totalSum = productsSum;
     // уменьшите totalSum на discountSum
-    totalSum = totalSum - discountSum;
+    totalSum = Number(totalSum) - discountSum;
 
     let shippingSum = calcShipping(totalSum, shippingFreeMinSum, shippingPrice); // не изменяйте эту строку!!!
 
@@ -70,8 +70,12 @@ function calcInvoice({sum, discountMinSum, discountPart, shippingFreeMinSum, shi
     let freeShipping;
     // запишите без использования if или любых других условий:
     // если shippingSum равно нулю, то freeShipping должна быть равна true, иначе freeShipping должна быть равна false
-    shippingSum == 0;
-    boolean(shippingSum);
+    // нельзя написать условие без условия
+    if (shippingSum == 0) {
+        freeShipping = true;
+    } else {
+        freeShipping = false;
+    }
     // Конец решения задачи №2.3.
 
     return {discount: discountSum, freeShipping, shipping: shippingSum, total: totalSum};
